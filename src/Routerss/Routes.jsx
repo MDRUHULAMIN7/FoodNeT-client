@@ -11,6 +11,7 @@ import AvailableFoods from "../Pages/AvailableFoods";
 import FoodDetail from "../Pages/FoodDetail";
 import MyManageFood from "../Pages/Authentications/MyManageFood";
 import MyFoodRequest from "../Pages/MyFoodRequest";
+import MyUpdate from "../Pages/MyUpdate";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
       {
         path:'/myfoodrequest',
         element:<PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
+      },
+      {
+        path:`/myupdate/:id`,
+        element:<PrivateRoute><MyUpdate></MyUpdate></PrivateRoute>,
+        loader:()=>fetch('http://localhost:5000/foods')
       }
       
     ],
