@@ -42,7 +42,7 @@ const FoodDetail = () => {
     const location=e.target.location.value;
     const date=e.target.date.value;
     const requestdate=e.target.requestdate.value;
-    const foodstatus="unavailable";
+    const foodstatus="requested";
     const additonalnotes=e.target.notes.value;
     const updatefood = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes,requestdate}
     console.log(requestdate);
