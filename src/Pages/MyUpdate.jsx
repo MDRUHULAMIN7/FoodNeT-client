@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/Authproviders";
+import Swal from "sweetalert2";
 
 
 const MyUpdate = () => {
@@ -27,7 +28,7 @@ const {
     additonalnotes,
   } = updarefood;
     
-  const handleFoodReq = (e) => {
+  const handleFoodUp = (e) => {
     e.preventDefault();
 
 
@@ -39,19 +40,19 @@ const {
     const quantity=e.target.quantity.value;
     const location=e.target.location.value;
     const date=e.target.date.value;
-    const requestdate=e.target.requestdate.value;
-    const foodstatus="requested";
+  
+    const foodstatus=e.target.foodstatus.value;
     const additonalnotes=e.target.notes.value;
-    const updatefood = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes,requestdate}
-    console.log(requestdate);
+    const updatefood = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes}
+    
     console.log(updatefood);
    
     // if(user.email===donatoremail){
     //     setError('You can not request for this food')
     //     return
     // }
-fetch(`http://localhost:5000/foods/${_id}`,{
-    method:"PATCH",
+fetch(`http://localhost:5000/foods-update/${_id}`,{
+    method:"PUT",
     headers:{
         'content-type':'application/json'
     },
@@ -60,8 +61,15 @@ fetch(`http://localhost:5000/foods/${_id}`,{
 .then(res=> res.json())
 .then(data=>{
     if(data.modifiedCount>0){
-        setSucces('Requested Succesfully')
-        navigator('/')
+        Swal.fire({
+            title: 'Success!',
+            text: 'YourFood Updated Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+        
+        })
+        setSucces('Updated Succesfully')
+         
     }
     console.log(data);
 })
@@ -75,11 +83,11 @@ fetch(`http://localhost:5000/foods/${_id}`,{
       
             <div className="w-2/3 mx-auto px-4">
                 <h1 className="text-3xl text-black text-center mt-5">
-                  Request For Food
+                  Update Your Food
                 </h1>
                 {/* <p className="text-center my-3 text-xl text-red-600">{error}</p> */}
                 <p className="text-center my-3 text-xl text-green-600">{succes}</p>
-                <form onSubmit={handleFoodReq } action="">
+                <form onSubmit={handleFoodUp } action="">
                   <div className="mt-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-5">
                     <div className="space-y-2">
                       <label htmlFor="">FoodName:</label>
@@ -87,8 +95,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                       <input
                         className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                         placeholder="FoodName"
-                        readOnly
-                        value={name}
+                       
+                        defaultValue={name}
                         type="text"
                         name="name"
                        
@@ -100,8 +108,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                       <input
                         className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                         placeholder="imageurl"
-                        readOnly
-                        value={image}
+                       
+                        defaultValue={image}
                         type="text"
                         name="image"
                         id=""
@@ -114,8 +122,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                         className="border-2  border-purple-500 rounded-xl px-3 py-2 w-full"
                         placeholder="quantity"
                         type="number"
-                        readOnly
-                        value={quantity}
+                       
+                        defaultValue={quantity}
                         name="quantity"
                         id=""
                       />
@@ -128,8 +136,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                         placeholder="location"
                         type="text"
                         name="location"
-                        readOnly
-                        value={location}
+                       
+                        defaultValue={location}
                         id=""
                       />
                     </div>
@@ -140,8 +148,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                         className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                         placeholder="expiredate"
                         type="date"
-                        readOnly
-                        value={date}
+                      
+                        defaultValue={date}
                         name="date"
                         id=""
                       />
@@ -152,15 +160,15 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                       <input
                         className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                         placeholder="foodstatus"
-                        defaultValue={"Available"}
+                       
                         type="text"
                         name="foodstatus"
-                        readOnly
-                        value={foodstatus}
+                     
+                        defaultValue={foodstatus}
                         id=""
                       />
                     </div>
-                    <div className="space-y-2 ">
+                    <div className="space-y-2 col-span-2">
                       <label htmlFor="">AdditionalNotes:</label>
                       <br />
                       <input
@@ -172,24 +180,14 @@ fetch(`http://localhost:5000/foods/${_id}`,{
                         id=""
                       />
                     </div>
-                    <div className="space-y-2 ">
-                      <label htmlFor="">RequestDate:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="additionalnotes"
-                        type="date"
-                        name="requestdate"
-                       
-                      />
-                    </div>
+                 
 
                     <div className="space-y-2 md:col-span-2 col-span-1 text-xl text-white">
                       <br />
                       <input
                         className="border-2 border-purple-500 bg-rose-600 rounded-xl px-3 py-2 w-full"
                         type="submit"
-                        value="Request"
+                        value="Update"
                         id=""
                       />
                     </div>
