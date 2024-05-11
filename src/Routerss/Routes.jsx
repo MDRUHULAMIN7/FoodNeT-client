@@ -9,6 +9,8 @@ import Home from "../Components/Home";
 import AddFood from "../Pages/AddFood";
 import AvailableFoods from "../Pages/AvailableFoods";
 import FoodDetail from "../Pages/FoodDetail";
+import MyManageFood from "../Pages/Authentications/MyManageFood";
+import MyFoodRequest from "../Pages/MyFoodRequest";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,15 @@ const router = createBrowserRouter([
         path:'/fooddetail/:id',
         element:<PrivateRoute><FoodDetail></FoodDetail></PrivateRoute>,
         loader:()=>fetch('http://localhost:5000/foods')
+      },
+      {
+        path:'/mymanagefood',
+        element:<PrivateRoute><MyManageFood></MyManageFood></PrivateRoute>
+      }
+      ,
+      {
+        path:'/myfoodrequest',
+        element:<PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
       }
       
     ],

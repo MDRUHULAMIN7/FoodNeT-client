@@ -37,6 +37,7 @@ const {user,logOut}=useContext(AuthContext)
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/showall"}>AvailableFoods</NavLink>
           <NavLink className={({isActive,isPending})=>
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/register"}>SignUp</NavLink>
+   
             </ul>
           </div>
           <div>
@@ -61,11 +62,11 @@ const {user,logOut}=useContext(AuthContext)
     <div className="navbar-end ">
       
       <div className="dropdown dropdown-end mr-5">
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div tabIndex={0} role="button" className="btn btn-ghost ">
           <div>
             {
               !user ?
-              <div  className=" border-2 border-purple-600 pt-2 pb-2 pr-2 pl-1 rounded-lg text-white bg-purple-500 mt-2"><Link to={'/login'}className=""> Login</Link> </div>
+              <div  className="  text-xl font-semibold  rounded-lg text-white  "><Link to={'/login'}className=""> Login</Link> </div>
 
                :    <div  className="w-12 h-12 rounded-full border-purple-800 border-2 mr-2">
                
@@ -84,12 +85,31 @@ const {user,logOut}=useContext(AuthContext)
 
         {
             user ?
-<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-purple-300 rounded-box w-64 ">
+<ul tabIndex={0} className="mt-3 z-[1] p-2  shadow menu menu-sm dropdown-content bg-base-200 rounded-box w-64 ">
 
 
-<div className="flex"><h1 className="text-xl text-center text-white pl-2">{user.displayName}</h1>
+<div className=""><h1 className="text-xl text-left text-rose-600 pl-2">{user.displayName}</h1>
+<div className="m-2 text-xl text-black">
+  
+{
+  user ? <NavLink title="Go to your added food" className={({isActive,isPending})=>
+    isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/mymanagefood"}>MyManageFood</NavLink> :""
+}
 
-<button className="btn-secondary rounded-full w-fitpy-2 mx-auto bg-purple-800 text-white" onClick={HandleSignOut}>LogOut</button></div>
+</div>
+<div className="m-2 text-xl text-black">
+  
+{
+  user ? <NavLink title="Go to your added food" className={({isActive,isPending})=>
+    isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/myfoodrequest"}>MyRequestFood</NavLink> :""
+}
+
+</div>
+<div>
+<button className="btn-secondary rounded-full w-full py-2 mx-auto bg-rose-600 m-2 text-white" onClick={HandleSignOut}>LogOut</button>
+</div>
+
+</div>
 
 
 

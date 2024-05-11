@@ -5,7 +5,8 @@ const Foodcard = ({food}) => {
     const {donatorname,_id,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes}=food
     return (
         <div className="h-96  hover:shadow-2xl hover:shadow-rose-500">
-            <div      className="bg-no-repeat mb-2 hero bg-cover h-2/5 w-full"
+            <div className="h-2/5 w-full">
+            <div      className=" mb-2 bg-cover hero   h-full w-full"
         style={{
           backgroundImage: `url(${image})`,
         }}>
@@ -13,6 +14,8 @@ const Foodcard = ({food}) => {
             <div className="flex mt-[108px] w-full justify-between px-1 "><h1 className="bg-green-500 text-xl text-center py-2 px-2 ">{foodstatus}</h1> <h1 className="bg-rose-600 text-xl  px-2 py-2 ">Quantity : {quantity}</h1></div>
 
             </div>
+            </div>
+       
             <hr />
             <div className="h-3/5 mt-2  ">
                <div className="px-2">
