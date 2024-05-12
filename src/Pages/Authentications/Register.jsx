@@ -6,6 +6,7 @@ import { AuthContext } from "../../AuthProviders/Authproviders";
 import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [RegisterError, setRegistererror] = useState("");
@@ -38,18 +39,17 @@ const Register = () => {
       .then((result) => {
         console.log(result);
         e.target.reset();
+      
         navigate(from, { replace: true });
         toast.success("Register Succesgully");
 
         updateUserProfile(name, image);
-        setUser({ ...result?.user, photoURL: image, displayName: name }).then(
-          () => {
-            //   navigate('/')
-          }
-        );
+        setUser({ ...result?.user, photoURL: image, displayName: name })
+       
+      
         setUser(result.user);
 
-        return;
+      return
       })
       .catch((error) => {
         console.error(error);
@@ -107,6 +107,8 @@ const Register = () => {
                 name="email"
               />
             </div>
+            <Helmet
+            > <title>FoodNeT/Register</title></Helmet>
             <div className="space-y-2 relative">
               <label htmlFor="">Password:</label>
               <br />

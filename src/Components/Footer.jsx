@@ -17,7 +17,7 @@ const Footer = () => {
                     <h3 className="tracking-wide uppercase dark:text-gray-900">Product</h3>
                     <ul className="space-y-1">
                         <li>
-                            <a rel="noopener noreferrer" href="#">Features</a>
+                            <a rel="noopener noreferrer" href="#available">AvailableFoods</a>
                         </li>
                         <li>
                             <a rel="noopener noreferrer" href="#">Integrations</a>
@@ -33,11 +33,12 @@ const Footer = () => {
                 <div className="space-y-3">
                     <h3 className="tracking-wide uppercase dark:text-gray-900">Company</h3>
                     <ul className="space-y-1">
+                       
                         <li>
-                            <a rel="noopener noreferrer" href="#team">meet our team</a>
+                            <a rel="noopener noreferrer" href="#home1">Home</a>
                         </li>
                         <li>
-                            <a rel="noopener noreferrer" href="#">Terms of Service</a>
+                            <a rel="noopener noreferrer" href="#team">Meet our team</a>
                         </li>
                     </ul>
                 </div>

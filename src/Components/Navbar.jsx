@@ -20,7 +20,7 @@ const {user,logOut}=useContext(AuthContext)
 
       
     return (
-        <div className="navbar bg-rose-500">
+        <div className="navbar bg-rose-500   ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,7 +71,7 @@ const {user,logOut}=useContext(AuthContext)
                :    <div  className="w-12 h-12 rounded-full border-purple-800 border-2 mr-2">
                
                    
-                   <img title={user.displayName} className="rounded-full" src={user.photoURL} alt="" />
+                   <img title={user.displayName}  className="rounded-full h-full w-full" src={user.photoURL} alt="" />
           
                    
                 </div>

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/Authproviders";
+import { Helmet } from "react-helmet";
 // import toast from "react-hot-toast";
 // import toast from "react-hot-toast";
 
@@ -27,6 +28,9 @@ const FoodDetail = () => {
   } = detailfood;
 
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const locations = useLocation();
+  const from = locations.state || "/";
   console.log(user);
   console.log(donatoremail);
   const{email}=user
@@ -50,10 +54,10 @@ const FoodDetail = () => {
     console.log(requestdate);
     console.log(updatefood);
 
-    if(foodstatus !== "Available"){
-      setError('your requested food is unavailable')
-      return
-    }
+    // if(foodstatus !== "Available"){
+    //   setError('your requested food is unavailable')
+    //   return
+    // }
    
     if(useremail === donatoremail){
         setError('You can not request for this food')
@@ -70,7 +74,7 @@ fetch(`http://localhost:5000/foods/${_id}`,{
 .then(data=>{
     if(data.modifiedCount>0){
         setSucces('Requested Succesfully')
-      
+        navigate(from, { replace: true });
     }
     console.log(data);
 })
@@ -82,14 +86,14 @@ fetch(`http://localhost:5000/foods/${_id}`,{
       <div
         className="md:h-[80vh] w-11/12 mx-auto md:flex lg:p-10 hover:shadow-2xl py-5 hover:shadow-rose-500
 "
-      >
+      >   <Helmet> <title>FoodNeT/Fooddetails</title></Helmet>
         <div className="bg-no-repeat hero bg-cover md:w-1/2 h-full ">
-          <img className="w-full  rounded-xl h-full" src={image} alt="" />
+          <img className="w-full h-[500px] rounded-xl " src={image} alt="" />
 
           <hr />
         </div>
         <div className="md:w-1/2 px-2 hover:pl-4 ">
-          <div className="flex my-2 justify-between items-center md:text-2xl ">
+          <div className="md:flex my-2 justify-between items-center md:text-2xl ">
             <img className="h-20  rounded-full" src={donatorphoto} alt="" />{" "}
             <h1>Donateby:{donatorname}</h1>
             <h1>Email:{donatoremail}</h1>
@@ -118,8 +122,8 @@ fetch(`http://localhost:5000/foods/${_id}`,{
 
           {/* modal */}
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
-          <button
-            className=" w-full bg-rose-600 py-2  mt-3 text-white font-semibold"
+          <button 
+            className=" w-full bg-rose-600 py-2   mt-3 text-white font-semibold"
             onClick={() => document.getElementById("my_modal_4").showModal()}
           >
             Request For The Food

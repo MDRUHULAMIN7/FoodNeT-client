@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProviders/Authproviders";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 // import toast from "react-hot-toast";
 
 const AddFood = () => {
@@ -114,7 +115,7 @@ fetch('http://localhost:5000/foods',{
             </div>
             <div className="space-y-2">
               <label htmlFor="">FoodStatus:</label>
-              <br />
+              <br />   <Helmet> <title>FoodNeT/AddFood</title></Helmet>
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="foodstatus" readOnly  value={"Available"}

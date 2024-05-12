@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProviders/Authproviders";
 import { Grid } from "react-loader-spinner";
 import Team from "../Pages/Team";
+
+import { Helmet } from "react-helmet";
 import Timeline from "../Pages/Timeline";
 
 const Home = () => {
@@ -32,8 +34,8 @@ const{loading}=useContext(AuthContext)
       );
   return (
     <div>
-      <div
-        className="bg-no-repeat hero bg-cover h-[90vh] w-full"
+      <div id="home1"
+        className="bg-no-repeat hero bg-cover h-full w-full"
         style={{
           backgroundImage: `url(${banner})`,
         }}
@@ -82,7 +84,7 @@ const{loading}=useContext(AuthContext)
           </div>
         </div>
       </div>
-
+<Helmet><title>FoodNeT/Home</title></Helmet>
       <div className="mt-10">
 <h1 className="text-rose-600 text-center mb-5 md:text-5xl text-2xl ">Foods</h1>
         <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
@@ -101,7 +103,7 @@ const{loading}=useContext(AuthContext)
       <Timeline></Timeline>
       {/* team */}
 
-      <div>
+      <div id="team">
         <Team></Team>
       </div>
     </div>

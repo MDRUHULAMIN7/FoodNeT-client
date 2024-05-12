@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import google from "../../assets/images/google.png";
+import { Helmet } from "react-helmet";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, setUser, user, signInGoogle } = useContext(AuthContext);
@@ -62,7 +63,7 @@ const Login = () => {
           <div className="flex justify-center mx-auto">
             <img className="w-auto h-12 " src={logo} alt="" />
           </div>
-
+          <Helmet> <title>FoodNeT/Login</title></Helmet>
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b  lg:w-1/4"></span>
 

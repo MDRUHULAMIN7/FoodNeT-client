@@ -3,6 +3,7 @@ import Foodcard from "../Components/Foodcard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProviders/Authproviders";
 import Loader from "./Loader";
+import { Helmet } from "react-helmet";
 // import { Grid } from "react-loader-spinner";
 
 const AvailableFoods = () => {
@@ -69,7 +70,7 @@ const AvailableFoods = () => {
 
   );  }
   return (
-    <div>
+    <div id="available">
       <h1 className="text-3xl md:text-4xl text-center my-5">Available Foods</h1>
 
       <div className="md:flex justify-center items-center my-5 gap-10">
@@ -82,7 +83,7 @@ const AvailableFoods = () => {
                   name="name"
                   placeholder="Enter Food Title"
                 />
-
+   <Helmet> <title>FoodNeT/AvailableFoods</title></Helmet>
                 <div className="indicator ">
                   <input
                     className="btn join-item bg-white text-xl  text-black "

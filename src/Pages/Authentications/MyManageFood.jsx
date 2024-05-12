@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProviders/Authproviders";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const MyManageFood = () => {
@@ -65,7 +66,7 @@ const MyManageFood = () => {
 
 
     return (
-        <div>
+        <div>   <Helmet> <title>FoodNeT/MyManageFood</title></Helmet>
              <h1 className="text-3xl md:text-4xl text-center my-4">Your Added Foods</h1>
 
 

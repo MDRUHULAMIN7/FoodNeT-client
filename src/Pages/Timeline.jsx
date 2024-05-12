@@ -1,10 +1,12 @@
 
+
 const Timeline = () => {
 
     
     
   return (
     <div>
+
       <section className=" ">
         <div className="container max-w-5xl px-4 py-12 mx-auto">
           <div className="grid gap-4 mx-4 sm:grid-cols-12">

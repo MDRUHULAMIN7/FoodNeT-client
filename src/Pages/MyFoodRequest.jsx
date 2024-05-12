@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/Authproviders";
+import { Helmet } from "react-helmet";
 
 
 const MyFoodRequest = () => {
@@ -25,7 +26,7 @@ console.log(cfood);
 
 
     return (
-        <div className="mb-5">
+        <div className="mb-5">   <Helmet> <title>FoodNeT/MyFoodRequest</title></Helmet>
              <h1 className="text-3xl md:text-4xl text-center my-4">Your Requested Foods</h1>
 
 
