@@ -1,4 +1,8 @@
+
 const Timeline = () => {
+
+    
+    
   return (
     <div>
       <section className=" ">
@@ -59,8 +63,9 @@ const Timeline = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
 
-export default Timeline;
+export default Timeline
