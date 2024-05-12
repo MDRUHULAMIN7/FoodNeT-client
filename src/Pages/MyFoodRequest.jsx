@@ -25,7 +25,7 @@ console.log(cfood);
 
 
     return (
-        <div>
+        <div className="mb-5">
              <h1 className="text-3xl md:text-4xl text-center my-4">Your Requested Foods</h1>
 
 
@@ -56,7 +56,7 @@ console.log(cfood);
             <td className="text-lg">{food.location}</td>
             <td className="text-lg">{food.date}</td>
             <td className="text-lg">{food.requestdate}</td>
-            <td className="text-lg">{food.donateamount}</td>
+            <td className="text-lg">{food.donateamount} $</td>
            
           </tr>)
      }

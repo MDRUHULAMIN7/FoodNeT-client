@@ -49,6 +49,11 @@ const FoodDetail = () => {
     const updatefood = {donatorname,donatoremail, donateamount,donatorphoto,name,useremail ,image,quantity,location,date,foodstatus,additonalnotes,requestdate}
     console.log(requestdate);
     console.log(updatefood);
+
+    if(foodstatus !== "Available"){
+      setError('your requested food is unavailable')
+      return
+    }
    
     if(useremail === donatoremail){
         setError('You can not request for this food')

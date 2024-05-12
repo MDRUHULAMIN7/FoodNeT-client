@@ -58,6 +58,7 @@ fetch('http://localhost:5000/foods',{
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="FoodName"
+                required
                 type="text"
                 name="name"
                 id=""
@@ -69,6 +70,7 @@ fetch('http://localhost:5000/foods',{
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="imageurl"
+                required
                 type="text"
                 name="image"
                 id=""
@@ -80,6 +82,7 @@ fetch('http://localhost:5000/foods',{
               <input
                 className="border-2  border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="quantity"
+                required
                 type="number"
                 name="quantity"
                 id=""
@@ -91,6 +94,7 @@ fetch('http://localhost:5000/foods',{
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="location"
+                required
                 type="text"
                 name="location"
                 id=""
@@ -102,6 +106,7 @@ fetch('http://localhost:5000/foods',{
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
                 placeholder="expiredate"
+                required
                 type="date"
                 name="date"
                 id=""
@@ -112,7 +117,7 @@ fetch('http://localhost:5000/foods',{
               <br />
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                placeholder="foodstatus" defaultValue={"Available"}
+                placeholder="foodstatus" readOnly  value={"Available"}
                 type="text"
                 name="foodstatus"
                 id=""
@@ -123,7 +128,7 @@ fetch('http://localhost:5000/foods',{
               <br />
               <input
                 className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                placeholder="additionalnotes"
+                placeholder="additionalnotes" required
                 type="text"
                 name="notes"
                 id=""
