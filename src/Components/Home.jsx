@@ -2,12 +2,34 @@ import { Link, useLoaderData } from "react-router-dom";
 import banner from "../assets/images/nl.jpg";
 import banner2 from "../assets/images/rr.jpg";
 import Foodcard from "./Foodcard";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProviders/Authproviders";
+import { Grid } from "react-loader-spinner";
+import Team from "../Pages/Team";
+import Timeline from "../Pages/Timeline";
 
 const Home = () => {
+const{loading}=useContext(AuthContext)
 
     const foods=useLoaderData();
     const sixfoods = foods.slice(0,6)
     console.log(foods);
+    if (loading)
+      return (
+        <p className="text-2xl pt-32 flex justify-center items-center">
+          {" "}
+          <Grid
+            visible={true}
+            height="80"
+            width="80"
+            color="red"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass="grid-wrapper"
+          />
+        </p>
+      );
   return (
     <div>
       <div
@@ -73,6 +95,14 @@ const Home = () => {
         </div>
 
      
+      </div>
+      {/* timeline */}
+
+      <Timeline></Timeline>
+      {/* team */}
+
+      <div>
+        <Team></Team>
       </div>
     </div>
   );

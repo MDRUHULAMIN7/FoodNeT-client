@@ -1,13 +1,24 @@
 
 import { Link } from 'react-router-dom';
-import error from '../assets/images/404r.jpg'
+
 const ErrorPage = () => {
     return (
-<div className='h-screen bg-no-repeat bg-cover w-full mx-auto'   style={{
-              backgroundImage: `url(${error })`,
-            }}
->       <div>
-<button className=' pt-20'><Link className='flex justify-center md:ml-36 ml-16 px-5 py-2 text-white  rounded-xl bg-red-500' to={'/'}>Go Home</Link></button></div> </div>
+<div className='w-full mx-auto'   
+
+
+            
+>  <section className="flex items-center h-screen bg-no-repeat bg-cover   p-16 dark:bg-gray-50 dark:text-gray-800 "    >
+	<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+		<div className="max-w-md text-center">
+			<h2 className="mb-8 font-extrabold text-9xl dark:text-gray-400">
+				<span className="sr-only">Error</span>404
+			</h2>
+			<p className="text-2xl font-semibold md:text-3xl">Sorry, we couldnt find this page.</p>
+			<p className="mt-4 mb-8 dark:text-gray-600">But dont worry, you can find plenty of other things on our homepage.</p>
+			<Link to={'/'} className="px-8 py-3 font-semibold bg-rose-600 text-white rounded dark:bg-violet-600 dark:text-gray-50">Back to homepage</Link>
+		</div>
+	</div>
+</section>   </div>
     );
 };
 

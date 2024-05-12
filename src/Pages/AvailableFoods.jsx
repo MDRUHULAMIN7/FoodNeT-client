@@ -2,9 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import Foodcard from "../Components/Foodcard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProviders/Authproviders";
+import Loader from "./Loader";
+// import { Grid } from "react-loader-spinner";
 
 const AvailableFoods = () => {
-  const { setLoading } = useContext(AuthContext);
+  const { setLoading,loading } = useContext(AuthContext);
   const foods = useLoaderData();
   const [sortedfoods, setFoods] = useState([]);
   const [search, setSearch] = useState([]);
@@ -52,7 +54,20 @@ const AvailableFoods = () => {
         console.log(data);
         setFoods(data);
       });
+    
   };
+  if (loading)
+    {return (
+
+      
+      sortedfoods.map(food=>
+        
+   <div key={food._id}    className="flex">  <Loader></Loader> </div>
+
+      )
+  
+
+  );  }
   return (
     <div>
       <h1 className="text-3xl md:text-4xl text-center my-5">Available Foods</h1>

@@ -34,7 +34,7 @@ const Footer = () => {
                     <h3 className="tracking-wide uppercase dark:text-gray-900">Company</h3>
                     <ul className="space-y-1">
                         <li>
-                            <a rel="noopener noreferrer" href="#">Privacy</a>
+                            <a rel="noopener noreferrer" href="#team">meet our team</a>
                         </li>
                         <li>
                             <a rel="noopener noreferrer" href="#">Terms of Service</a>
