@@ -82,18 +82,18 @@ fetch(`http://localhost:5000/foods/${_id}`,{
    
   };
   return (
-    <div>
+    <div className="">
       <div
-        className="md:h-[80vh] w-11/12 mx-auto md:flex lg:p-10 hover:shadow-2xl py-5 hover:shadow-rose-500
+        className="md:h-[620px] w-11/12 mx-auto md:flex items-center lg:p-10 hover:shadow-2xl py-5 hover:shadow-rose-500
 "
       >   <Helmet> <title>FoodNeT/Fooddetails</title></Helmet>
         <div className="bg-no-repeat hero bg-cover md:w-1/2 h-full ">
           <img className="w-full h-[500px] rounded-xl " src={image} alt="" />
 
-          <hr />
+          
         </div>
         <div className="md:w-1/2 px-2 hover:pl-4 ">
-          <div className="md:flex my-2 justify-between items-center md:text-2xl ">
+          <div className="lg:flex mx-auto my-2 justify-between items-center md:text-2xl ">
             <img className="h-20  rounded-full" src={donatorphoto} alt="" />{" "}
             <h1>Donateby:{donatorname}</h1>
             <h1>Email:{donatoremail}</h1>

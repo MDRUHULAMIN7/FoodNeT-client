@@ -76,8 +76,8 @@ const{loading}=useContext(AuthContext)
               }}
             >
               <div className="flex justify-center items-center">
-                <Link className="bg-rose-600 px-3 py-2 rounded-xl text-xl text-white">
-                  Donate Food
+                <Link to={'/addfood'} className="bg-rose-600 px-3 py-2 rounded-xl text-xl text-white">
+                  Donate Foods
                 </Link>
               </div>
             </div>

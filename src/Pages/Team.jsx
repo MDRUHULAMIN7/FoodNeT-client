@@ -10,10 +10,10 @@ const Team = () => {
             </div>
             <div className="grid w-full grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center border-2 border-rose-500 rounded-xl dark:bg-gray-500" src="https://i.ibb.co/vdHtTRc/416035099-345208908386622-1653732975588768297-n.jpg" />
+                    <img alt="" className="object-cover h-56 w-44 mx-auto mb-4 bg-center border-2 border-rose-500 rounded-xl dark:bg-gray-500" src="https://i.ibb.co/vdHtTRc/416035099-345208908386622-1653732975588768297-n.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Ruhul Amin</h4>
-                        <p className="text-xl dark:text-gray-600"> CEO FoodNeT</p>
+                        <p className="text-xl dark:text-gray-600"> Ceo FoodNeT</p>
                         <div className="flex mt-2 space-x-2">
                             <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-4 h-4">
@@ -34,10 +34,10 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img src="https://i.ibb.co/KXS0HHd/shipman-northcutt-sg-ZX15-Da8-YE-unsplash.jpg" alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" />
+                    <img src="https://i.ibb.co/KXS0HHd/shipman-northcutt-sg-ZX15-Da8-YE-unsplash.jpg" alt="" className="object-cover h-56 w-44 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Leroy Jenkins</h4>
-                        <p className="text-lg dark:text-gray-600">coo FoodNeT</p>
+                        <p className="text-lg dark:text-gray-600">Coo FoodNeT</p>
                         <div className="flex mt-2 space-x-2">
                             <a rel="noopener noreferrer" href="#" title="Twitter" className="dark:text-gray-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor" className="w-4 h-4">
@@ -58,7 +58,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/v1CVRvY/ali-morshedlou-WMD64t-Mfc4k-unsplash.jpg" />
+                    <img alt="" className="object-cover h-56 w-44 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/v1CVRvY/ali-morshedlou-WMD64t-Mfc4k-unsplash.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Dannies Alvas</h4>
                         <p className="text-lg dark:text-gray-600">Manager FoodNet</p>
@@ -82,7 +82,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/8sTxZvd/juan-encalada-WC7-KIHo13-Fc-unsplash.jpg" />
+                    <img alt="" className="object-cover h-56 mx-auto w-44 mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/8sTxZvd/juan-encalada-WC7-KIHo13-Fc-unsplash.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Juho jelusa</h4>
                         <p className="text-xl dark:text-gray-600"> Sen.Web developer FoodNeT</p>
@@ -106,7 +106,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/wcfMndY/yogendra-singh-Hrp-YHch-Kb5-Y-unsplash.jpg" />
+                    <img alt="" className="object-cover w-44 h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/wcfMndY/yogendra-singh-Hrp-YHch-Kb5-Y-unsplash.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Haland</h4>
                         <p className="text-xl dark:text-gray-600">Editor FoodNeT</p>
@@ -130,7 +130,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/0m61Xzv/jonas-kakaroto-mj-Rwhvq-EC0-U-unsplash.jpg" />
+                    <img alt="" className="object-cover w-44 h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/0m61Xzv/jonas-kakaroto-mj-Rwhvq-EC0-U-unsplash.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Kobir Islam</h4>
                         <p className="text-xl dark:text-gray-600">Web developer FoodNeT</p>
@@ -154,7 +154,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://source.unsplash.com/240x320/?portrait?6" />
+                    <img alt="" className="object-cover w-44 h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://source.unsplash.com/240x320/?portrait?6" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Aron Nan</h4>
                         <p className="text-xl dark:text-gray-600">Web developer FoodNeT</p>
@@ -178,7 +178,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <img alt="" className="object-cover h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/g7PWHkK/tamarcus-brown-29p-Fb-I-D1-Sc-unsplash.jpg" />
+                    <img alt="" className="object-cover w-44 h-56 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500" src="https://i.ibb.co/g7PWHkK/tamarcus-brown-29p-Fb-I-D1-Sc-unsplash.jpg" />
                     <div className="flex flex-col items-center">
                         <h4 className="text-xl font-semibold">Mamba black</h4>
                         <p className="text-xl dark:text-gray-600">Web developer FoodNeT</p>

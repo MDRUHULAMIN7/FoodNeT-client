@@ -121,8 +121,8 @@ const AvailableFoods = () => {
       <div
         className={
           layout
-            ? "grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5"
-            : " grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5"
+            ? "grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-3 grid-cols-2 gap-5"
+            : " grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5"
         }
       >
         {availablefoods.map((food) => (
