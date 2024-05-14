@@ -17,12 +17,7 @@ const MyFoodRequest = () => {
 
 
 console.log(cfood);
-//  const{
-//  donatorname, 
-//  location ,date,requestdate,donateamount
 
-
-// }=cfood;
 
 
     return (
