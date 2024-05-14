@@ -79,7 +79,7 @@ const Authproviders = ({ children }) => {
     return () => {
       Unsubscribe();
     };
-  }, []);
+  }, [user?.email]);
   const AuthInformations = {
     createUser,
     user,
