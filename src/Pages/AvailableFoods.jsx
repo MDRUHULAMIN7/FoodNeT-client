@@ -49,7 +49,9 @@ const AvailableFoods = () => {
     const text = e.target.name.value;
 
     setSearch(text);
-    fetch(`http://localhost:5000/foods/${search}`)
+    fetch(`http://localhost:5000/foods/${search}`
+      
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

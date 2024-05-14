@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase.cofig";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -51,8 +52,27 @@ const Authproviders = ({ children }) => {
 
   useEffect(() => {
     const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser={email:userEmail};
       setUser(currentUser);
       setLoading(false);
+      if(currentUser){
+       
+        axios.post('http://localhost:5000/jwt',loggedUser,{withCredentials:true})
+        .then(res =>{
+          console.log('token access',res.data);
+        })
+      }
+      else{
+        axios.get('http://localhost:5000/logout',{
+            withCredentials:true,
+        })
+        .then(()=>{
+            // console.log(res.data);
+        })
+    }
+
+      
       console.log("usseffect", currentUser);
     });
     Aos.init();

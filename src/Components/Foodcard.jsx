@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import { ImLocation } from "react-icons/im";
+import { CgCalendarDates } from "react-icons/cg";
 const Foodcard = ({ food }) => {
   const {
     donatorname,
@@ -14,7 +15,7 @@ const Foodcard = ({ food }) => {
     additonalnotes,
   } = food;
   return (
-    <div className="rounded-md shadow-md  hover:border-2 hover:border-rose-500  dark:bg-gray-50 dark:text-gray-800 ">
+    <div className="rounded-md shadow-md  hover:shadow-2xl hover:shadow-rose-500  dark:bg-gray-50 dark:text-gray-800 ">
 	<div className="">
 		<div>
 		<div className="flex items-center justify-between p-3">
@@ -45,11 +46,11 @@ const Foodcard = ({ food }) => {
 		<div className=" pt-1 pb-1">
 			<div className="flex items-center  gap-5">
 			
-			<h1 className="text-3xl">{name}</h1> <h1 className="text-xl pt-3">{location}</h1>
+			<h1 className="text-3xl">{name}</h1> <h1 className="text-xl pt-3 flex gap-1 items-center"><span className="text-rose-500"><ImLocation></ImLocation></span>{location}</h1>
 			</div>
 		</div>
 		<div className="flex space-x-2 text-lg mb-2 ">
-			<h1>ExpireDate:{date}</h1> , <h1>Quantity:{quantity}</h1>
+			<h1 className="flex gap-1 items-center "> <span className="text-rose-500"><CgCalendarDates></CgCalendarDates></span>{date}</h1> , <h1>Quantity:{quantity}</h1>
 		
 		</div>
     <div className="flex justify-between">
