@@ -34,10 +34,10 @@ const Register = () => {
       return;
     }
 
-    const user = { name, email, image, password };
+    // const user = { name, email, image, password };
     createUser(email, password)
       .then((result) => {
-        console.log(result);
+      
         e.target.reset();
       
         navigate(from, { replace: true });
@@ -55,7 +55,7 @@ const Register = () => {
         console.error(error);
         toast.error(error);
       });
-    console.log(user);
+    // console.log(user);
   };
 
   return (

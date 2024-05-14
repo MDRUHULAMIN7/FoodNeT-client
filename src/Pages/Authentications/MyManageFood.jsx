@@ -11,7 +11,7 @@ const MyManageFood = () => {
     const{user}=useContext(AuthContext)
     const{email}=user
    useEffect(()=>{
-    fetch(`http://localhost:5000/foods-email/${email}`,{credentials:'include'})
+    fetch(`https://foodnet-server.vercel.app/foods-email/${email}`,{credentials:'include'})
     .then(res=>res.json())
     .then(data=>{
         // console.log(data);
@@ -34,14 +34,14 @@ const MyManageFood = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foods-id/${_id}`
+        fetch(`https://foodnet-server.vercel.app/foods-id/${_id}`
         ,
         {
           method:'DELETE'
         })
         .then(res=> res.json())
         .then(data=>{
-          console.log(data)
+         
           if(data.deletedCount > 0){
             Swal.fire(
                "Deleted Succesfully!",

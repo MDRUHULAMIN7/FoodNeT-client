@@ -6,15 +6,15 @@ import Swal from "sweetalert2";
 
 const MyUpdate = () => {
     const foods = useLoaderData();
-    console.log(foods);
+    // console.log(foods);
     const {id}=useParams()
-    console.log(id);
+   
     const[succes,setSucces]=useState('')
     const { user } = useContext(AuthContext);
-  console.log(user);
+  
   const{displayName,email,photoURL}=user
     const updarefood = foods.find(f=> f._id === id)
-console.log(updarefood);
+
 
 const {
 
@@ -45,13 +45,10 @@ const {
     const additonalnotes=e.target.notes.value;
     const updatefood = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes}
     
-    console.log(updatefood);
+
    
-    // if(user.email===donatoremail){
-    //     setError('You can not request for this food')
-    //     return
-    // }
-fetch(`http://localhost:5000/foods-update/${_id}`,{
+   
+fetch(`https://foodnet-server.vercel.app/foods-update/${_id}`,{
     method:"PUT",
     headers:{
         'content-type':'application/json'

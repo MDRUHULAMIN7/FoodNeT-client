@@ -20,8 +20,8 @@ const AvailableFoods = () => {
   const availablefoods = sortedfoods.filter(
     (food) => food.foodstatus === "Available"
   );
-  console.log(availablefoods);
-  console.log(foods);
+  // console.log(availablefoods);
+  // console.log(foods);
 
   const serchfoods = availablefoods.filter((food) => food.name == search);
   console.log(serchfoods);
@@ -42,19 +42,19 @@ const AvailableFoods = () => {
     setFoods(sortfoods);
     setLoading(true);
   };
-  console.log(sortedfoods);
+  // console.log(sortedfoods);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const text = e.target.name.value;
 
     setSearch(text);
-    fetch(`http://localhost:5000/foods/${search}`
+    fetch(`https://foodnet-server.vercel.app/foods/${search}`
       
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setFoods(data);
       });
     

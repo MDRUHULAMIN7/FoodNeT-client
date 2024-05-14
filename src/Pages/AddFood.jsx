@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const{displayName,email,photoURL}=user
 
   const handleAddFood=e=>{
@@ -23,11 +23,11 @@ const AddFood = () => {
     const foodstatus=e.target.foodstatus.value;
     const additonalnotes=e.target.notes.value;
 
-    console.log(donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes);
+    // console.log(donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes);
     
     const food = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes}
 
-fetch('http://localhost:5000/foods',{
+fetch('https://foodnet-server.vercel.app/foods',{
     method:"POST",
     headers:{
         'content-type':'application/json'
@@ -40,7 +40,7 @@ fetch('http://localhost:5000/foods',{
         toast.success('Food Added Succesfully')
     }
    
-    console.log(data);
+    // console.log(data);
 })
 
 

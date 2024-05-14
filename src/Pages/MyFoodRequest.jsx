@@ -10,13 +10,13 @@ const MyFoodRequest = () => {
 
     const foods = useLoaderData();
     const{user}=useContext(AuthContext)
-    console.log(foods);
-    console.log(user);
+    // console.log(foods);
+    // console.log(user);
 
     const cfood = foods.filter((cc) => cc.foodstatus === "requested" && cc.useremail === user.email)
 
 
-console.log(cfood);
+// console.log(cfood);
 
 
 

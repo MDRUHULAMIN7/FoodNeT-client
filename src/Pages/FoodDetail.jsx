@@ -10,9 +10,9 @@ const FoodDetail = () => {
   const { id } = useParams();
   const[suces,setSucces]=useState('')
   const[error,setError]=useState('')
-  console.log(id, foods);
+  // console.log(id, foods);
   const detailfood = foods.find((food) => food._id === id);
-  console.log(detailfood);
+  // console.log(detailfood);
   const {
     donatorname,
     donatoremail,
@@ -31,8 +31,8 @@ const FoodDetail = () => {
   const navigate = useNavigate();
   const locations = useLocation();
   const from = locations.state || "/";
-  console.log(user);
-  console.log(donatoremail);
+  // console.log(user);
+  // console.log(donatoremail);
   const{email}=user
   const handleFoodReq = (e) => {
     e.preventDefault();
@@ -51,8 +51,8 @@ const FoodDetail = () => {
     const foodstatus="requested";
     const additonalnotes=e.target.notes.value;
     const updatefood = {donatorname,donatoremail, donateamount,donatorphoto,name,useremail ,image,quantity,location,date,foodstatus,additonalnotes,requestdate}
-    console.log(requestdate);
-    console.log(updatefood);
+    // console.log(requestdate);
+    // console.log(updatefood);
 
     // if(foodstatus !== "Available"){
     //   setError('your requested food is unavailable')
@@ -63,7 +63,7 @@ const FoodDetail = () => {
         setError('You can not request for this food')
         return
     }
-fetch(`http://localhost:5000/foods/${_id}`,{
+fetch(`https://foodnet-server.vercel.app/foods/${_id}`,{
     method:"PATCH",
     headers:{
         'content-type':'application/json'
@@ -76,7 +76,7 @@ fetch(`http://localhost:5000/foods/${_id}`,{
         setSucces('Requested Succesfully')
         navigate(from, { replace: true });
     }
-    console.log(data);
+    // console.log(data);
 })
 
    

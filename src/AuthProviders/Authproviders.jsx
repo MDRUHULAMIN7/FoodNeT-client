@@ -58,13 +58,13 @@ const Authproviders = ({ children }) => {
       setLoading(false);
       if(currentUser){
        
-        axios.post('http://localhost:5000/jwt',loggedUser,{withCredentials:true})
-        .then(res =>{
-          console.log('token access',res.data);
+        axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
+        .then(() =>{
+          // console.log('token access',res.data);
         })
       }
       else{
-        axios.get('http://localhost:5000/logout',{
+        axios.get('https://foodnet-server.vercel.app/logout',{
             withCredentials:true,
         })
         .then(()=>{

@@ -10,7 +10,7 @@ import google from "../../assets/images/google.png";
 import { Helmet } from "react-helmet";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signInUser, setUser, user, signInGoogle } = useContext(AuthContext);
+  const { signInUser, setUser,  signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || "/";
@@ -21,10 +21,10 @@ const Login = () => {
 
     const password = e.target.password.value;
 
-    const user = { email, password };
+    // const user = { email, password };
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
+      
         // navigate('/')
         e.target.reset();
 
@@ -36,18 +36,18 @@ const Login = () => {
         console.error(error);
         toast.error(error.message);
       });
-    console.log(user);
+    // console.log(user);
   };
   //   google
 
   const HandleGoogle = () => {
     signInGoogle()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        // console.log(result.user);
 
         navigate(from, { replace: true });
         toast.success("Login Successfully");
-        console.log(user);
+        // console.log(user);
         //  return location.reload()
       })
       .catch((error) => {

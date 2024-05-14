@@ -15,7 +15,7 @@ const{loading}=useContext(AuthContext)
 
     const foods=useLoaderData();
     const sixfoods = foods.slice(0,6)
-    console.log(foods);
+    // console.log(foods);
     if (loading)
       return (
         <p className="text-2xl pt-32 flex justify-center items-center">

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('http://localhost:5000/foods', {credentials:'include'}
+        loader:()=>fetch('https://foodnet-server.vercel.app/foods', {credentials:'include'}
        )
       },
       {
@@ -45,13 +45,13 @@ const router = createBrowserRouter([
       {
         path:'showall',
         element:<AvailableFoods></AvailableFoods>,
-        loader:()=>fetch('http://localhost:5000/foods', {credentials:'include'}
+        loader:()=>fetch('https://foodnet-server.vercel.app/foods', {credentials:'include'}
         )
       },
       {
         path:'/fooddetail/:id',
         element:<PrivateRoute><FoodDetail></FoodDetail></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/foods', {credentials:'include'})
+        loader:()=>fetch('https://foodnet-server.vercel.app/foods', {credentials:'include'})
       },
       {
         path:'/mymanagefood',
@@ -61,12 +61,12 @@ const router = createBrowserRouter([
       {
         path:'/myfoodrequest',
         element:<PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/foods', {credentials:'include'})
+        loader:()=>fetch('https://foodnet-server.vercel.app/foods', {credentials:'include'})
       },
       {
         path:`/myupdate/:id`,
         element:<PrivateRoute><MyUpdate></MyUpdate></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/foods', {credentials:'include'})
+        loader:()=>fetch('https://foodnet-server.vercel.app/foods', {credentials:'include'})
       }
       
     ],
