@@ -15,7 +15,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     setFoods(foods);
-  }, []);
+  }, [foods]);
 
   const availablefoods = sortedfoods.filter(
     (food) => food.foodstatus === "Available"
