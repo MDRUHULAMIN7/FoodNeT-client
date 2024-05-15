@@ -63,7 +63,7 @@ const{loading}=useContext(AuthContext)
                 </button>
               </div>
 
-              <p className="lg:text-3xl text-xl text-black flex justify-center ml-4">
+              <p className="lg:text-3xl text-xl text-white font-semibold flex justify-center ml-4">
                 Subscribe and stay with us
               </p>
             </div>
