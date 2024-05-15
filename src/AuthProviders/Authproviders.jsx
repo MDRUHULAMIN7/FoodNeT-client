@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase.cofig";
-import axios from "axios";
+// import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -52,25 +52,25 @@ const Authproviders = ({ children }) => {
 
   useEffect(() => {
     const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail = currentUser?.email || user?.email;
-      const loggedUser={email:userEmail};
+      // const userEmail = currentUser?.email || user?.email;
+      // const loggedUser={email:userEmail};
       setUser(currentUser);
       setLoading(false);
-      if(currentUser){
+    //   if(currentUser){
        
-        axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
-        .then(() =>{
-          // console.log('token access',res.data);
-        })
-      }
-      else{
-        axios.get('https://foodnet-server.vercel.app/logout',{
-            withCredentials:true,
-        })
-        .then(()=>{
-            // console.log(res.data);
-        })
-    }
+    //     axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
+    //     .then(() =>{
+    //       // console.log('token access',res.data);
+    //     })
+    //   }
+    //   else{
+    //     axios.get('https://foodnet-server.vercel.app/logout',{
+    //         withCredentials:true,
+    //     })
+    //     .then(()=>{
+    //         // console.log(res.data);
+    //     })
+    // }
 
       
       console.log("usseffect", currentUser);

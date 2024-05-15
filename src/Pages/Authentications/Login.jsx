@@ -8,6 +8,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import google from "../../assets/images/google.png";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, setUser,  signInGoogle } = useContext(AuthContext);
@@ -24,7 +25,15 @@ const Login = () => {
     // const user = { email, password };
     signInUser(email, password)
       .then((result) => {
-      
+        const userEmail =  result.user?.email;
+        const loggedUser={email:userEmail};
+        if(result.user){
+       
+          axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
+          .then(() =>{
+            // console.log('token access',res.data);
+          })
+        }
         // navigate('/')
         e.target.reset();
 
@@ -42,9 +51,17 @@ const Login = () => {
 
   const HandleGoogle = () => {
     signInGoogle()
-      .then(() => {
+      .then((result) => {
         // console.log(result.user);
-
+        const userEmail =  result.user?.email;
+        const loggedUser={email:userEmail};
+        if(result.user){
+       
+          axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
+          .then(() =>{
+            // console.log('token access',res.data);
+          })
+        }
         navigate(from, { replace: true });
         toast.success("Login Successfully");
         // console.log(user);

@@ -73,22 +73,27 @@ const AvailableFoods = () => {
   );  }
   return (
     <div id="available">
-      <h1 className="text-3xl md:text-4xl text-center my-5">Available Foods</h1>
+      <h1 className="text-3xl md:text-4xl text-center my-5 ">Available Foods</h1>
+      <Helmet> <title>FoodNeT/AvailableFoods</title></Helmet>
+      <div className="grid  lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 mb-5">
 
-      <div className="md:flex justify-center items-center my-5 gap-10">
-        <div>
-          <div className="join ">
+      <div className=" col-span-1 md:text-left text-center">
+        <button className="px-3 py-2 text-xl text-white bg-rose-600 rounded-xl" onClick={()=>{setLayout(!layout)}}>Change Layout</button>
+        </div>
+
+
+        <div className="join col-span-2 lg:mx-auto md:text-end mx-auto">
             <div>
               <form onSubmit={handleSearch}>
                 <input
-                  className="input input-bordered join-item  bg-rose-600 w-96 text-xl  text-white font-bold"
+                  className="input input-bordered lg:w-72 md:w-56 w-44 join-item  bg-rose-600 md:text-xl  text-white font-bold"
                   name="name"
                   placeholder="Enter Food Title"
                 />
-   <Helmet> <title>FoodNeT/AvailableFoods</title></Helmet>
+
                 <div className="indicator ">
-                  <input
-                    className="btn join-item bg-white text-xl  text-black "
+                <input
+                    className="btn join-item bg-white md:text-xl  text-black "
                     type="submit"
                     value="Search"
                   />
@@ -96,8 +101,10 @@ const AvailableFoods = () => {
               </form>
             </div>
           </div>
-        </div>
-        <div>
+      
+
+
+        <div className="col-span-1 lg:text-right md:text-left text-center">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn m-1 bg-rose-600 text-white text-xl">
               Sort By ExpireDate
@@ -115,16 +122,16 @@ const AvailableFoods = () => {
             </ul>
           </div>
         </div>
+       
+        
 
-        <div>
-        <button className="px-3 py-2 text-xl text-white bg-rose-600 rounded-xl" onClick={()=>{setLayout(!layout)}}>Change Layout</button>
-        </div>
+
       </div>
       <div
         className={
           layout
-            ? "grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-3 grid-cols-2 gap-5"
-            : " grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5"
+            ? "grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-5 mb-5"
+            : " grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-5"
         }
       >
         {availablefoods.map((food) => (

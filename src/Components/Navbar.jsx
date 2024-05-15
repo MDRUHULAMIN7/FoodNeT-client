@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/Authproviders";
 import toast from "react-hot-toast";
 import logo from "../assets/images/logo.png"
+import axios from "axios";
 
 
 const Navbar = () => {
@@ -10,8 +11,18 @@ const Navbar = () => {
 const {user,logOut}=useContext(AuthContext)
       const HandleSignOut=()=>{
         logOut()
+        axios.post('https://foodnet-server.vercel.app/logout',{},{
+          withCredentials:true,
+      })
+      .then(()=>{
+          // console.log(res.data);
+      })
         .then(()=>{
          toast.success('LogOut Succesfully')
+          
+      
+    
+
         })
         .catch(error=>{
           toast.warning(error.message)

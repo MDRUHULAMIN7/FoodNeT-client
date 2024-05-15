@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Register = () => {
   const [RegisterError, setRegistererror] = useState("");
@@ -37,7 +38,15 @@ const Register = () => {
     // const user = { name, email, image, password };
     createUser(email, password)
       .then((result) => {
-      
+        const userEmail =  result.user?.email;
+        const loggedUser={email:userEmail};
+        if(result.user){
+       
+          axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
+          .then(() =>{
+            // console.log('token access',res.data);
+          })
+        }
         e.target.reset();
       
         navigate(from, { replace: true });

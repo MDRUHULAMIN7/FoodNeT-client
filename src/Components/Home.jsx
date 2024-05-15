@@ -41,7 +41,7 @@ const{loading}=useContext(AuthContext)
         }}
       >
         <div className="lg:flex lg:gap-5 bg-opacity-50  hero-overlay">
-          <div className="lg:w-2/3 lg:m-20 md:m-10 m-5   lg:space-y-4 md:space-y-3 space-y-2 ">
+          <div className="lg:w-2/3 lg:m-20 md:m-10    lg:space-y-4 md:space-y-3 space-y-2 ">
             {" "}
             <h1 className="lg:text-7xl md:text-4xl text-3xl font-bold text-rose-600 leading-10">
               Feast Together: Sharing Food, Donate Food With{" "}
