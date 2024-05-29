@@ -25,7 +25,7 @@ const AddFood = () => {
 
     // console.log(donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes);
     
-    const food = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date,foodstatus,additonalnotes}
+    const food = {donatorname,donatoremail,donatorphoto,name,image,quantity,location,date: new Date(date),foodstatus,additonalnotes}
 
 fetch('https://foodnet-server.vercel.app/foods',{
     method:"POST",

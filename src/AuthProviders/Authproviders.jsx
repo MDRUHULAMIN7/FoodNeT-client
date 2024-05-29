@@ -56,21 +56,9 @@ const Authproviders = ({ children }) => {
       // const loggedUser={email:userEmail};
       setUser(currentUser);
       setLoading(false);
-    //   if(currentUser){
+
        
-    //     axios.post('https://foodnet-server.vercel.app/jwt',loggedUser,{withCredentials:true})
-    //     .then(() =>{
-    //       // console.log('token access',res.data);
-    //     })
-    //   }
-    //   else{
-    //     axios.get('https://foodnet-server.vercel.app/logout',{
-    //         withCredentials:true,
-    //     })
-    //     .then(()=>{
-    //         // console.log(res.data);
-    //     })
-    // }
+
 
       
       console.log("usseffect", currentUser);

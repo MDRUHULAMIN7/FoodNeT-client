@@ -48,7 +48,8 @@ const {user,logOut}=useContext(AuthContext)
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/showall"}>AvailableFoods</NavLink>
           <NavLink className={({isActive,isPending})=>
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/register"}>SignUp</NavLink>
-   
+   {user ?  <NavLink className={({isActive,isPending})=>
+        isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/bookmarks"}>Bookmarks</NavLink>:'' }
             </ul>
           </div>
           <div>
@@ -67,6 +68,9 @@ const {user,logOut}=useContext(AuthContext)
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/showall"}>AvailableFoods</NavLink>
           <NavLink className={({isActive,isPending})=>
         isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/register"}>SignUp</NavLink>
+           {user ?  <NavLink className={({isActive,isPending})=>
+        isPending ? 'text-blue-500 ' : isActive ? 'text-white  rounded-lg' :'' } to={"/bookmarks"}>Bookmarks</NavLink>:'' }
+        
           </ul>
         </div>
    

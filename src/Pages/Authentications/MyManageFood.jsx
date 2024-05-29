@@ -17,10 +17,10 @@ const MyManageFood = () => {
         // console.log(data);
         setfoods(data)
     })
-    // console.log(foods);
+  
    },[email,foods])
 
-
+  console.log(foods);
 
 
    const handleDelete=_id=>{
@@ -91,7 +91,7 @@ const MyManageFood = () => {
     <tbody >
       {/* row 1 */}
      {
-        foods.map(food=> <tr key={food._id}>
+        foods?.map(food=> <tr key={food._id}>
        
             <td>
               <div className="flex items-center gap-3 text-xl">

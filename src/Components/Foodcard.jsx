@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import { ImLocation } from "react-icons/im";
 import { CgCalendarDates } from "react-icons/cg";
+import { LuBookmarkPlus } from "react-icons/lu";
+import toast from "react-hot-toast";
+import { useContext, useState } from "react";
+import { AuthContext } from "../AuthProviders/Authproviders";
+
 const Foodcard = ({ food }) => {
+	const {user}= useContext(AuthContext)
+	const [active,setactive]=useState(false)
+	console.log(user);
+
   const {
     donatorname,
     _id,
@@ -14,6 +23,45 @@ const Foodcard = ({ food }) => {
     foodstatus,
     additonalnotes,
   } = food;
+
+
+
+  
+
+  const addBookmark=food=>{
+	setactive(true)
+	console.log(food);
+	const bookmark ={
+		name:food.name,
+		image:food.image,
+		email: user?.email,
+		location:food.location,
+		price :food.price,
+		date:food.date,
+		status:food.foodstatus
+
+	}
+
+	
+fetch('https://foodnet-server.vercel.app/bookmarks',{
+    method:"POST",
+    headers:{
+        'content-type':'application/json'
+    },
+    body:JSON.stringify(bookmark)
+})
+.then(res=> res.json())
+.then(data=>{
+    if(data.insertedId){
+        toast.success('Food Added to Bookmark')
+    }
+   
+    // console.log(data);
+})
+
+
+  }
+
   return (
     <div className="rounded-md shadow-md  hover:shadow-2xl hover:shadow-rose-500  dark:bg-gray-50 dark:text-gray-800 ">
 	<div className="">
@@ -44,9 +92,14 @@ const Foodcard = ({ food }) => {
 			
 		</div>
 		<div className=" pt-1 pb-1">
-			<div className="flex items-center  gap-5">
+			<div className="flex justify-between items-center">
 			
+			<div className="flex items-center  gap-5">
 			<h1 className="text-3xl">{name}</h1> <h1 className="text-xl pt-3 flex gap-1 items-center"><span className="text-rose-500"><ImLocation></ImLocation></span>{location}</h1>
+			</div>
+		<div>
+		<button  onClick={()=>addBookmark(food)} disabled={active} className="mt-1 disabled:text-green-500"><LuBookmarkPlus className="w-12 h-8"></LuBookmarkPlus></button>
+		</div>
 			</div>
 		</div>
 		<div className="flex space-x-2 text-lg mb-2 ">

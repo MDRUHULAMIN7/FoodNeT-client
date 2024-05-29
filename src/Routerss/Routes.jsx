@@ -12,6 +12,7 @@ import FoodDetail from "../Pages/FoodDetail";
 import MyManageFood from "../Pages/Authentications/MyManageFood";
 import MyFoodRequest from "../Pages/MyFoodRequest";
 import MyUpdate from "../Pages/MyUpdate";
+import Bookmarks from "../Pages/Authentications/Bookmarks";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path:'/mymanagefood',
         element:<PrivateRoute><MyManageFood></MyManageFood></PrivateRoute>
+      },
+      {
+        path:'/bookmarks',
+        element:<Bookmarks></Bookmarks>
       }
       ,
       {
