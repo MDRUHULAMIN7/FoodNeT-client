@@ -50,7 +50,7 @@ const{loading}=useContext(AuthContext)
             <p className="mt-4 lg:text-2xl text-xl text-white ">
               Join our community-driven platform, connecting surplus food with
               those in need. Together, lets combat food waste and hunger. Share,
-              save, and make a difference today!
+              save, and make a difference today with us!
             </p>
             <div className="md:flex gap-5 ">
               <div className="join ">
