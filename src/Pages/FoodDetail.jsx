@@ -2,17 +2,15 @@ import { useContext, useState } from "react";
 import { Link, useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProviders/Authproviders";
 import { Helmet } from "react-helmet";
-// import toast from "react-hot-toast";
-// import toast from "react-hot-toast";
 
 const FoodDetail = () => {
   const foods = useLoaderData();
   const { id } = useParams();
-  const[suces,setSucces]=useState('')
-  const[error,setError]=useState('')
-  // console.log(id, foods);
-  const detailfood = foods.find((food) => food._id === id);
-  // console.log(detailfood);
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+
+  const detailFood = foods.find((food) => food._id === id);
+
   const {
     donatorname,
     donatoremail,
@@ -22,270 +20,227 @@ const FoodDetail = () => {
     quantity,
     location,
     date,
-   _id,
+    _id,
     foodstatus,
     additonalnotes,
-  } = detailfood;
+  } = detailFood;
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const locations = useLocation();
-  const from = locations.state || "/";
-  // console.log(user);
-  // console.log(donatoremail);
-  const{email}=user
-  const handleFoodReq = (e) => {
+  const locationState = useLocation();
+  const from = locationState.state || "/";
+  const { email } = user;
+
+  const handleFoodReq = async (e) => {
     e.preventDefault();
 
-
-  
-    const useremail =email
- 
-    const name=e.target.name.value;
-    const image=e.target.image.value;
-    const quantity=e.target.quantity.value;
-    const location=e.target.location.value;
-    const date=e.target.date.value;
-    const donateamount=e.target.donateamount.value;
-    const requestdate=e.target.requestdate.value;
-    const foodstatus="requested";
-    const additonalnotes=e.target.notes.value;
-    const updatefood = {donatorname,donatoremail, donateamount,donatorphoto,name,useremail ,image,quantity,location,date,foodstatus,additonalnotes,requestdate}
-    // console.log(requestdate);
-    // console.log(updatefood);
-
-    // if(foodstatus !== "Available"){
-    //   setError('your requested food is unavailable')
-    //   return
-    // }
-   
-    if(useremail === donatoremail){
-        setError('You can not request for this food')
-        return
+    if (email === donatoremail) {
+      setError('You cannot request this food.');
+      return;
     }
-fetch(`https://foodnet-server.vercel.app/foods/${_id}`,{
-    method:"PATCH",
-    headers:{
-        'content-type':'application/json'
-    },
-    body:JSON.stringify(updatefood)
-})
-.then(res=> res.json())
-.then(data=>{
-    if(data.modifiedCount>0){
-        setSucces('Requested Succesfully')
+
+    const updateFood = {
+      donatorname,
+      donatoremail,
+      donateamount: e.target.donateamount.value,
+      donatorphoto,
+      name,
+      useremail: email,
+      image,
+      quantity,
+      location,
+      date,
+      foodstatus: "requested",
+      additonalnotes: e.target.notes.value,
+      requestdate: e.target.requestdate.value,
+    };
+
+    try {
+      const response = await fetch(`https://foodnet-server.vercel.app/foods/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateFood),
+      });
+      const data = await response.json();
+      if (data.modifiedCount > 0) {
+        setSuccess("Requested Successfully");
         navigate(from, { replace: true });
+      } else {
+        setError("Request failed. Please try again.");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     }
-    // console.log(data);
-})
-
-   
   };
+
   return (
-    <div className="">
-      <div
-        className="md:h-[620px] w-11/12 mx-auto md:flex items-center lg:p-10 hover:shadow-2xl py-5 hover:shadow-rose-500
-"
-      >   <Helmet> <title>FoodNeT/Fooddetails</title></Helmet>
-        <div className="bg-no-repeat hero bg-cover md:w-1/2 h-full ">
-          <img className="w-full h-[500px] rounded-xl " src={image} alt="" />
+    <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>FoodNet - Food Details</title>
+      </Helmet>
 
-          
-        </div>
-        <div className="md:w-1/2 px-2 hover:pl-4 ">
-          <div className="lg:flex mx-auto my-2 justify-between items-center md:text-2xl ">
-            <img className="h-20  rounded-full" src={donatorphoto} alt="" />{" "}
-            <h1>Donateby:{donatorname}</h1>
-            <h1>Email:{donatoremail}</h1>
+      <div className="container mx-auto p-6 lg:p-12">
+        <div className="flex flex-col lg:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="lg:w-1/2">
+            <img className="w-full h-full object-cover" src={image} alt={name} />
           </div>
-          <hr />
-          <div className="space-y-3 md:space-y-4 lg:space-y-5">
-            <p className=" my-2">
-              <h1 className="text-2xl lg:text-5xl md:text-3xl font-semibold mb-4">
-                {name}
-              </h1>
-              <h1 className="text-xl md:text-2xl lg:text-3xl">{location}</h1>
-            </p>
-            <h1 className="font-semibold md:text-2xl text-xl ">
-              ExpireDate:{date}
-            </h1>
-            <div className="  justify-between px-1 ">
-              <h1 className="text-xl  md:text-2xl lg:text-3xl  py-2 ">
-                FoodStatus:{foodstatus}
-              </h1>{" "}
-              <h1 className=" text-xl md:text-2xl lg:text-3xl  py-2 ">
-                Quantity : {quantity}
-              </h1>
-            </div>
-          </div>
-          <p>{additonalnotes}</p>
 
-          {/* modal */}
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
-          <button 
-            className=" w-full bg-rose-600 py-2   mt-3 text-white font-semibold"
-            onClick={() => document.getElementById("my_modal_4").showModal()}
-          >
-            Request For The Food
-          </button>
-          <dialog id="my_modal_4" className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
-              {/* updat */}
-              <div className="w-2/3 mx-auto px-4">
-                <h1 className="text-3xl text-black text-center mt-5">
-                  Request For Food
-                </h1>
-                <p className="text-center my-3 text-xl text-red-600">{error}</p>
-                
-                <p className="text-center my-3 text-xl text-green-600">{suces}</p> 
-                <form onSubmit={handleFoodReq } action="">
-                  <div className="mt-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-5">
-                    <div className="space-y-2">
-                      <label htmlFor="">FoodName:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="FoodName"
-                        readOnly
-                        value={name}
-                        type="text"
-                        name="name"
-                       
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="">FoodImage:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="imageurl"
-                        readOnly
-                        value={image}
-                        type="text"
-                        name="image"
-                        id=""
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="">FoodQuantity:</label>
-                      <br />
-                      <input
-                        className="border-2  border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="quantity"
-                        type="number"
-                        readOnly
-                        value={quantity}
-                        name="quantity"
-                        id=""
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="">Pickup Location:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="location"
-                        type="text"
-                        name="location"
-                        readOnly
-                        value={location}
-                        id=""
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="">ExpireDate:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="expiredate"
-                        type="date"
-                        readOnly
-                        value={date}
-                        name="date"
-                        id=""
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="">FoodStatus:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="foodstatus"
-                        defaultValue={"Available"}
-                        type="text"
-                        name="foodstatus"
-                        readOnly
-                        value={foodstatus}
-                        id=""
-                      />
-                    </div>
-                   
-                    <div className="space-y-2 ">
-                      <label htmlFor="">RequestDate:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="additionalnotes"
-                        type="date"
-                        required
-                        name="requestdate"
-                       
-                      />
-                    </div>
-                    <div className="space-y-2 ">
-                      <label htmlFor="">DonateAmount:</label>
-                      <br />
-                      <input
-                      required
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="additionalnotes"
-                        type="number"
-                        name="donateamount"
-                       
-                      />
-                    </div>
-                    <div className="space-y-2 md:col-span-2">
-                      <label htmlFor="">AdditionalNotes:</label>
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 rounded-xl px-3 py-2 w-full"
-                        placeholder="additionalnotes"
-                        type="text"
-                        name="notes"
-                        defaultValue={additonalnotes}
-                        id=""
-                      />
-                    </div>
+          <div className="lg:w-1/2 p-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center space-x-4 mb-4">
+                <img className="h-16 w-16 rounded-full" src={donatorphoto} alt={donatorname} />
+                <div>
+                  <h2 className="text-xl font-semibold">{donatorname}</h2>
+                  <p className="text-gray-600">{donatoremail}</p>
+                </div>
+              </div>
 
-                    <div className="space-y-2 md:col-span-2 col-span-1 text-xl text-white">
-                      <br />
-                      <input
-                        className="border-2 border-purple-500 bg-rose-600 rounded-xl px-3 py-2 w-full"
-                        type="submit"
-                        value="Request"
-                        id=""
-                      />
+              <h1 className="text-3xl font-bold mb-4">{name}</h1>
+              <p className="text-lg text-gray-700 mb-2">Location: {location}</p>
+              <p className="text-lg text-gray-700 mb-4">Expire Date: {date}</p>
+
+              <div className="mb-4">
+                <p className="text-lg font-semibold">Food Status: {foodstatus}</p>
+                <p className="text-lg font-semibold">Quantity: {quantity}</p>
+              </div>
+
+              <p className="text-gray-700 mb-6">{additonalnotes}</p>
+
+              <button
+                className="w-full bg-rose-600 text-white py-2 rounded-lg font-semibold hover:bg-rose-700"
+                onClick={() => document.getElementById("my_modal_4").showModal()}
+              >
+                Request For The Food
+              </button>
+
+              <dialog id="my_modal_4" className="modal">
+                <div className="modal-box w-full max-w-lg">
+                  <h2 className="text-2xl font-semibold mb-4">Request For Food</h2>
+                  {error && <p className="text-red-600 mb-4">{error}</p>}
+                  {success && <p className="text-green-600 mb-4">{success}</p>}
+
+                  <form onSubmit={handleFoodReq} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Food Name:</label>
+                        <input
+                          id="name"
+                          type="text"
+                          name="name"
+                          readOnly
+                          value={name}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="image" className="block text-sm font-medium text-gray-700">Food Image:</label>
+                        <input
+                          id="image"
+                          type="text"
+                          name="image"
+                          readOnly
+                          value={image}
+                          className="mt-1 block w-full  px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Food Quantity:</label>
+                        <input
+                          id="quantity"
+                          type="number"
+                          name="quantity"
+                          readOnly
+                          value={quantity}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="location" className="block text-sm font-medium text-gray-700">Pickup Location:</label>
+                        <input
+                          id="location"
+                          type="text"
+                          name="location"
+                          readOnly
+                          value={location}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="date" className="block text-sm font-medium text-gray-700">Expire Date:</label>
+                        <input
+                          id="date"
+                          type="date"
+                          name="date"
+                          readOnly
+                          value={date}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="foodstatus" className="block text-sm font-medium text-gray-700">Food Status:</label>
+                        <input
+                          id="foodstatus"
+                          type="text"
+                          name="foodstatus"
+                          readOnly
+                          value={foodstatus}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="requestdate" className="block text-sm font-medium text-gray-700">Request Date:</label>
+                        <input
+                          id="requestdate"
+                          type="date"
+                          name="requestdate"
+                          required
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="donateamount" className="block text-sm font-medium text-gray-700">Donate Amount:</label>
+                        <input
+                          id="donateamount"
+                          type="number"
+                          name="donateamount"
+                          required
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="notes" className="block text-sm font-medium text-gray-700">Additional Notes:</label>
+                        <input
+                          id="notes"
+                          type="text"
+                          name="notes"
+                          defaultValue={additonalnotes}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </div>
                     </div>
+                    <button
+                      type="submit"
+                      className="w-full bg-rose-600 text-white py-2 rounded-lg font-semibold hover:bg-rose-700"
+                    >
+                      Submit Request
+                    </button>
+                  </form>
+
+                  <div className="modal-action">
+                    <button className="btn btn-primary" onClick={() => document.getElementById("my_modal_4").close()}>Close</button>
                   </div>
-                </form>
-              </div>
-              {/* updat */}
-              <div className="modal-action">
-                <form method="dialog">
-                  {/* if there is a button, it will close the modal */}
-                  <button className="btn">Close</button>
-                </form>
-              </div>
+                </div>
+              </dialog>
             </div>
-          </dialog>
-          {/* modal */}
 
-          <hr />
-          <Link to={`/showall`} className="mt-2">
-            <button className="w-full bg-green-600 py-2  mt-3 text-white font-semibold">
-              Show All Available Foods
-            </button>
-          </Link>
+            <Link to={`/showall`} className="block mt-4">
+              <button className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700">
+                Back to Food List
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
